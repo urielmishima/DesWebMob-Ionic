@@ -1,14 +1,21 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Bate-Papo
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label floating>Nome:</ion-label>
+    <ion-input [(ngModel)]="nome" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Sala:</ion-label>
+    <ion-select [(ngModel)]="sala">
+      <ion-option *ngFor="let sala of salas" [value]="sala.nome">{{sala.nome}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <button ion-button full (click)="onEntrarClick(sala, nome)">Entrar</button>
 </ion-content>

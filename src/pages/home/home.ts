@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SalaService } from '../../app/sala.service'
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,15 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  salas;
 
+  constructor(public navCtrl: NavController, private salaService: SalaService) {
+    this.salas = this.salaService.salas;
   }
-
+   onEntrarClick(nome, sala){
+    this.navCtrl.push('ChatPage', {
+      nomeParam: nome,
+      salaParam: sala
+    })
+  }
 }
