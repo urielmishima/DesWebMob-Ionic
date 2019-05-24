@@ -6,23 +6,26 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Chat</ion-title>
+    <ion-title>{{sala.nome}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list no-lines *ngFor="let mensagem of mensagens">
-    <ion-card></ion-card>>
-        <ion-card-header>
-          Header
-        </ion-card-header>
-        <ion-card-content>
-          The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-        </ion-card-content>
-      </ion-card>
+  <ion-list no-lines *ngFor="let mensagem of sala.mensagens">
+    <ion-card>
+      <ion-card-header>
+        {{mensagem.nome}}:
+      </ion-card-header>
+      <ion-card-content>
+        {{mensagem.texto}}
+      </ion-card-content>
+    </ion-card>
   </ion-list>
-
-  <ion-item end bottom>
-    <ion-input [(ngModel)]="mensagemEnviar" type="text" placeholder="Mensagem"></ion-input>
-  </ion-item>
 </ion-content>
+
+<ion-footer>
+  <ion-item>
+    <ion-input item-start [(ngModel)]="texto" type="text" placeholder="Mensagem"></ion-input>
+    <button item-end ion-fab (click)="enviarMensagem(nome, texto)">Enviar</button>
+  </ion-item>
+</ion-footer>

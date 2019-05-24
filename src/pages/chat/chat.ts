@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 /**
  * Generated class for the ChatPage page.
  *
@@ -25,7 +24,14 @@ export class ChatPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
-    console.log(this.sala + " | " + this.nome)
+    console.log(this.sala)
+  }
+
+  enviarMensagem(nome, texto){
+    this.sala.mensagens.push({
+      nome: nome,
+      texto: texto
+    })
   }
 
 }
