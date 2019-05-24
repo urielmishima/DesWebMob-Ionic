@@ -14,7 +14,7 @@
   <ion-item>
     <ion-label>Sala:</ion-label>
     <ion-select [(ngModel)]="sala">
-      <ion-option *ngFor="let sala of salas" [value]="sala">{{sala.nome}}</ion-option>
+      <ion-option *ngFor="let sala of salaService.salas" [value]="sala">{{sala.nome}}</ion-option>
     </ion-select>
   </ion-item>
   <button ion-button full (click)="onEntrarClick(nome, sala)">Entrar</button>
