@@ -29,7 +29,8 @@ export class ChatPage {
   }
 
   ionViewWillLeave(){
-    this.sala.usuarios = this.sala.usuarios.filter(x => x.nome !== this.nome);
+    this.salaService.salas[this.sala.id] = this.sala.usuarios.filter(x => x.nome !== this.nome);
+    console.log('Usuarios', this.salaService.salas[this.sala.id].usuarios)
   }
 
   enviarMensagem(nome, texto){

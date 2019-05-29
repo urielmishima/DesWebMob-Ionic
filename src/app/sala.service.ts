@@ -6,19 +6,28 @@ export class SalaService {
         {
             id: '1',
             nome: 'Cinema',
-            mensagens: [],
+            mensagens: [{
+                nome: 'BOT',
+                texto: 'Bem-vindo a sala'
+            }],
             usuarios: []
         },
         {
             id: '2',
             nome: 'Curiosidades',
-            mensagens: [],
+            mensagens: [{
+                nome: 'BOT',
+                texto: 'Bem-vindo a sala'
+            }],
             usuarios: []
         },
         {
             id: '3',
             nome: 'Esportes',
-            mensagens: [],
+            mensagens: [{
+                nome: 'BOT',
+                texto: 'Bem-vindo a sala'
+            }],
             usuarios: []
         }
     ]
