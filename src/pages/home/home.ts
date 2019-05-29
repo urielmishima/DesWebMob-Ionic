@@ -12,7 +12,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, private salaService: SalaService, public alertCtrl: AlertController) {
   }
 
-  onEntrarClick(nome, sala) {
+  onEntrarClick(nome, sala) {    
+    console.log(teste);
     if (!this.salaService.nomeNaSala(nome, sala)) {
       sala = this.salaService.salas[sala.id];
       sala.usuarios.push({nome: nome});

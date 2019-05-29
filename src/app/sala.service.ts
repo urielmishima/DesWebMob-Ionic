@@ -2,6 +2,19 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class SalaService {
+    icones = [
+        'logo-reddit',
+        'logo-html5',
+        'logo-javascript',
+        'rainy',
+        'power',
+        'paw',
+        'glasses',
+        'refresh-circle',
+        'return-left',
+        'logo-python',
+        'pizza'
+    ];
     salas = [
         {
             id: '1',
@@ -30,9 +43,11 @@ export class SalaService {
             }],
             usuarios: []
         }
-    ]
+    ];
 
     nomeNaSala(nome, sala) {
-        return this.salas[sala.id].usuarios.some(e => e.nome == nome)
+        let a = this.salas[sala.id].usuarios.some(e => e.nome == nome);
+        console.log(a)
+        return a;
     }
 }

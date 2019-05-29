@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SalaService } from '../../app/sala.service'
 
 /**
  * Generated class for the ChatPage page.
@@ -19,18 +18,19 @@ export class ChatPage {
   sala;
   nome; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private salaService: SalaService) {
-    this.sala = this.salaService.salas[this.navParams.get("salaParam").id];
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.sala = this.navParams.get("salaParam")
     this.nome = this.navParams.get("nomeParam")
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
+    console.log(this.sala)
   }
 
   ionViewWillLeave(){
-    this.salaService.salas[this.sala.id] = this.sala.usuarios.filter(x => x.nome !== this.nome);
-    console.log('Usuarios', this.salaService.salas[this.sala.id].usuarios)
+    const index = this.sala.usuarios.indexOf(this.nome, 0);
+    this.sala.usuarios.splice(index, 1);
   }
 
   enviarMensagem(nome, texto){
