@@ -13,10 +13,8 @@
 <ion-content padding>
   <ion-list no-lines *ngFor="let mensagem of sala.mensagens">
     <ion-card>
-      <ion-card-header>
-        {{mensagem.nome}}:
-      </ion-card-header>
       <ion-card-content>
+        <ion-icon [name]="mensagem.usuario.icone"></ion-icon> {{mensagem.usuario.nome}}:
         {{mensagem.texto}}
       </ion-card-content>
     </ion-card>
@@ -26,6 +24,6 @@
 <ion-footer>
   <ion-item>
     <ion-input item-start [(ngModel)]="texto" type="text" placeholder="Mensagem"></ion-input>
-    <button item-end ion-fab (click)="enviarMensagem(nome, texto)">Enviar</button>
+    <button item-end ion-fab (click)="enviarMensagem(usuario, texto)">Enviar</button>
   </ion-item>
 </ion-footer>

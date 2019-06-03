@@ -16,11 +16,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ChatPage {
 
   sala;
-  nome; 
+  usuario; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.sala = this.navParams.get("salaParam")
-    this.nome = this.navParams.get("nomeParam")
+    this.sala = this.navParams.get("salaParam");
+    this.usuario = this.navParams.get("usuarioParam");
   }
 
   ionViewDidLoad() {
@@ -29,13 +29,13 @@ export class ChatPage {
   }
 
   ionViewWillLeave(){
-    const index = this.sala.usuarios.indexOf(this.nome, 0);
+    const index = this.sala.usuarios.indexOf(this.usuario, 0);
     this.sala.usuarios.splice(index, 1);
   }
 
-  enviarMensagem(nome, texto){
+  enviarMensagem(usuario, texto){
     this.sala.mensagens.push({
-      nome: nome,
+      usuario: usuario,
       texto: texto
     })
   }

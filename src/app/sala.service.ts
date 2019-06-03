@@ -20,7 +20,10 @@ export class SalaService {
             id: '1',
             nome: 'Cinema',
             mensagens: [{
-                nome: 'BOT',
+                usuario: {
+                    icone: 'ionic',
+                    nome: 'BOT',
+                },
                 texto: 'Bem-vindo a sala'
             }],
             usuarios: []
@@ -29,7 +32,10 @@ export class SalaService {
             id: '2',
             nome: 'Curiosidades',
             mensagens: [{
-                nome: 'BOT',
+                usuario: {
+                    icone: 'ionic',
+                    nome: 'BOT',
+                },
                 texto: 'Bem-vindo a sala'
             }],
             usuarios: []
@@ -38,7 +44,10 @@ export class SalaService {
             id: '3',
             nome: 'Esportes',
             mensagens: [{
-                nome: 'BOT',
+                usuario: {
+                    icone: 'ionic',
+                    nome: 'BOT'
+                },
                 texto: 'Bem-vindo a sala'
             }],
             usuarios: []
