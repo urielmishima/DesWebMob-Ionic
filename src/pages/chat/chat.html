@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list no-lines *ngFor="let mensagem of sala.mensagens">
+  <ion-list no-lines *ngFor="let mensagem of sala.mensagens.slice().reverse()">
     <ion-card>
       <ion-card-content>
         <ion-icon [name]="mensagem.usuario.icone"></ion-icon> {{mensagem.usuario.nome}}:

@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+
+import { AngularFireDatabase } from 'angularfire2/database';
+
 import { SalaService } from '../../app/sala.service'
+
 
 @Component({
   selector: 'page-home',
@@ -9,7 +13,8 @@ import { SalaService } from '../../app/sala.service'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private salaService: SalaService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private salaService: SalaService, private alertCtrl: AlertController, db: AngularFireDatabase) {
+    console.log(db)
   }
 
   onEntrarClick(nome, sala, icone) {
