@@ -11,10 +11,16 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list no-lines *ngFor="let mensagem of sala.mensagens.slice().reverse()">
+  <ion-list no-lines *ngFor="let mensagem of mensagens | async">
     <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+            <ion-icon [name]="mensagem.usuario.icone"></ion-icon>
+        </ion-avatar>
+           <h2>{{mensagem.usuario.nome}}</h2>
+           <p>{{mensagem.data | date: "dd/MM/yyyy HH:mm" }}</p>
+      </ion-item>
       <ion-card-content>
-        <ion-icon [name]="mensagem.usuario.icone"></ion-icon> {{mensagem.usuario.nome}}:
         {{mensagem.texto}}
       </ion-card-content>
     </ion-card>
@@ -24,6 +30,6 @@
 <ion-footer>
   <ion-item>
     <ion-input item-start [(ngModel)]="texto" type="text" placeholder="Mensagem"></ion-input>
-    <button item-end ion-fab (click)="enviarMensagem(usuario, texto)">Enviar</button>
+    <button item-end ion-fab (click)="salaService.addMensagem(usuario, texto, sala)">Enviar</button>
   </ion-item>
 </ion-footer>

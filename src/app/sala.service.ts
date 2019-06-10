@@ -23,58 +23,96 @@ export class SalaService {
 
     salas = [
         {
-            id: '1',
             nome: 'Cinema',
             mensagens: [{
                 usuario: {
                     icone: 'ionic',
                     nome: 'BOT',
                 },
-                texto: 'Bem-vindo a sala'
+                texto: 'Bem-vindo a sala',
+                data: Date.now(),
+                reverseData: 0 - Date.now()
             }],
             usuarios: []
         },
         {
-            id: '2',
             nome: 'Curiosidades',
             mensagens: [{
                 usuario: {
                     icone: 'ionic',
                     nome: 'BOT',
                 },
-                texto: 'Bem-vindo a sala'
+                texto: 'Bem-vindo a sala',
+                data: Date.now(),
+                reverseData: 0 - Date.now()
             }],
             usuarios: []
         },
         {
-            id: '3',
             nome: 'Esportes',
             mensagens: [{
                 usuario: {
                     icone: 'ionic',
                     nome: 'BOT'
                 },
-                texto: 'Bem-vindo a sala'
+                texto: 'Bem-vindo a sala',
+                data: Date.now(),
+                reverseData: 0 - Date.now()
             }],
             usuarios: []
         }
-    ];
+    ]
+    start(){
+        for (const sala in this.salas) {
+            if (this.salas.hasOwnProperty(sala)) {
+                const element = this.salas[sala];
+                this.db.list("/salas/").push(element);                
+            }
+        }
+    }
 
-    nomeNaSala(nome, sala) {
-        let a = this.salas[sala.id].usuarios.some(e => e.nome == nome);
-        console.log(a)
-        return a;
+    fetchSalas (){
+        return this.db.list("/salas/");
     }
 
     addMensagem(usuario, texto, sala){
         this.db.list("/salas/" + sala.$key + "/mensagens/").push({
-            usuario: usuario,
-            texto: texto
+            usuario: {
+                nome: usuario.nome,
+                icone: usuario.icone
+            },
+            texto: texto,
+            data: Date.now(),
+            reverseData: 0 - Date.now()
         });
     }
 
+    getMensagens(salaKey){
+        return this.db.list("/salas/" + salaKey + "/mensagens/", {
+            query: {
+              orderByChild: 'reverseData'
+            }
+          });
+    }
+
     addUsuario(usuario, sala){
-        this.db.list("/salas/" + sala.$key + "/usuarios/").push(usuario);
+        return this.db.list("/salas/" + sala.$key + "/usuarios/").push(usuario).key;
+    }
+
+    getUsuario(sala, usuarioNome){
+        return this.db.list("/salas/" + sala.$key + "/usuarios/");
+    }
+    
+    removeUsuario(usuarioKey, sala){
+        this.db.object("/salas/" + sala.$key + "/usuarios/" + usuarioKey).remove()
+            .then(
+                x => console.log ("User deleted successfully")
+            ).
+            catch( error => {
+                console.log ("Could not delete user");
+                alert ("Could not delete user")
+            });
+
     }
 
     
